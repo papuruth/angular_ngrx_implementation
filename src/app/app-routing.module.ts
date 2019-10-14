@@ -6,13 +6,13 @@ import { UsersDetailsComponent } from './components/users-details/users-details.
 import { JobsComponent } from './components/jobs/jobs.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', component: JobsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'user/:id', component: UsersDetailsComponent },
-  { path: '', pathMatch: 'full', component: JobsComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { Action, createAction } from '@ngrx/store';
 import { IJobs, Job } from '../../models/jobs.interface';
 
 export enum EJobsActions {

@@ -6,7 +6,7 @@ const cors = require('cors');
 const route = require('./routes/express-routes')
 require('dotenv').config();
 
-mongoose.connect(process.env.MongoDbURI || 'mongodb://localhost:27017/JobPortal', { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/JobPortal', { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => {
     console.log('Database is connected')
   })

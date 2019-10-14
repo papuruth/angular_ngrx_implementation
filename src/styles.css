@@ -5,51 +5,73 @@
 }
 
 /* Card styling starts here */
+
 #JobsList {
     opacity: 1;
 }
 
 .content {
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: auto;
+    margin-bottom: 30px;
 }
 
 .active1 {
     padding: 20px;
     position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    height: 190px;
-    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.27) 1px 2px 10px;
+    margin-bottom: 20px;
+    height: auto;
 }
 
 .active1:hover {
-    display: block;
-    height: 190px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    height: auto;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-@media only screen and (max-width: 760px) {
-    .content {
-        margin-top: 90px;
-        margin-bottom: 50px;
-    }
-    .active1 {
-        padding: 20px;
-        position: relative;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        height: 490px;
-        margin-bottom: 10px;
-    }
-    .active1:hover {
-        display: block;
-        height: 490px;
-        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-    }
+.cross {
+    position: inherit;
+    float: right;
+    top: -30px;
+    margin-right: 10px;
 }
 
 .cardBorder {
     height: 150px;
     border-right: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+@media only screen and (max-width: 760px) {
+    .cross {
+        position: inherit;
+        float: right;
+        top: -330px;
+        margin-right: 10px;
+    }
+    .cardBorder {
+        height: 150px;
+        border-right: none;
+    }
+    .content {
+        margin-top: auto;
+        margin-bottom: 50px;
+    }
+    .active1 {
+        padding: 20px;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.27) 1px 2px 10px;
+        margin-bottom: 20px;
+        height: auto;
+    }
+    .active1:hover {
+        padding: 20px;
+        position: relative;
+        margin-bottom: 20px;
+        height: auto;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    }
 }
 
 .active:hover .btn {
@@ -168,60 +190,7 @@ a:hover {
 
 /* Card styling ends here */
 
-/* Footer styling here */
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    background-color: black;
-    color: white;
-    text-align: center;
-}
-
-.footer-right {
-    padding-top: 15px;
-    text-align: center;
-    vertical-align: middle;
-    color: white;
-}
-
-/* Footer styling ends here */
-
 /* Authentication styling starts here */
-
-.App {
-    margin-top: 90px;
-    text-align: center;
-}
-
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
-}
-
-.App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    width: 100%;
-    color: white;
-}
-
-.App-intro {
-    font-size: large;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
 
 .btnShift {
     margin-top: 10px;
@@ -258,11 +227,6 @@ a:hover {
     height: 132px;
     width: 132px;
     text-align: center;
-}
-
-.cross {
-    float: right;
-    margin-right: 10px;
 }
 
 .underline {

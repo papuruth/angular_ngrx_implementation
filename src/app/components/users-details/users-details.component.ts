@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 
+import {IUser} from '../../models/user.interface';
 import { IAppState } from '../../store/state/app.state';
 import { selectSelectedUser } from '../../store/selectors/user.selector';
 import { GetUser } from '../../store/actions/user.actions';
@@ -15,7 +16,7 @@ import { GetUser } from '../../store/actions/user.actions';
 
 export class UsersDetailsComponent implements OnInit {
   user$ = this._store.pipe(select(selectSelectedUser));
-  user: object;
+  user: IUser;
   constructor(
     private _store: Store<IAppState>,
     private _route: ActivatedRoute

@@ -1,10 +1,9 @@
 import { initialJobsState, IJobsState } from '../state/job.state';
 import { JobsActions, EJobsActions } from '../actions/jobs.actions';
 
-export const JobsReducers = (state = initialJobsState, action: JobsActions): IJobsState => {
+export function JobsReducers(state = initialJobsState, action: JobsActions): IJobsState {
     switch (action.type) {
         case EJobsActions.GetJobsSuccess: {
-            console.log(action.payload)
             return action.payload.pager.currentPage === 0
                 ? {
                     ...state,

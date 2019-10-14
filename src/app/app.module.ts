@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from 'src/environments/environment';
 import { UserService } from './services/user.service';
@@ -19,11 +19,9 @@ import { JobsService } from './services/jobs.service';
 import { JobsEffects } from './store/effects/jobs.effects';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { AppliedJobsComponent } from './components/applied.jobs/applied.jobs.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,21 +29,29 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UsersDetailsComponent,
     JobsComponent,
     HeaderComponent,
-    FooterComponent,
-    ProfileComponent,
-    AppliedJobsComponent,
-    LoginComponent,
-    SignupComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     InfiniteScrollModule,
     HttpClientModule,
-    StoreModule.forRoot(appReducers),
+    StoreModule.forRoot(appReducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true
+      },
+    }),
     EffectsModule.forRoot([UserEffects, JobsEffects]),
-    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    AppRoutingModule
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router', routerState: RouterState.Minimal }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgxSpinnerModule
   ],
   providers: [UserService, JobsService],
   bootstrap: [AppComponent]

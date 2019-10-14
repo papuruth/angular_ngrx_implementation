@@ -1,6 +1,6 @@
 const job = require('../models/jobs')
 
-exports.getJobs = async function (req, res, next) {
+exports.getJobs = async function (req, res) {
     const jobs = await job.find({}, function (err, data) {
         if (err) {
             console.log(err.message)
@@ -23,7 +23,7 @@ exports.getJobs = async function (req, res, next) {
                 jobs: data,
                 pager: {
                     totalItems: jobs.length,
-                    totalPages: totalPages,
+                    totalPages: totalPages - 1,
                     currentPage: currentPage
                 }
             })
